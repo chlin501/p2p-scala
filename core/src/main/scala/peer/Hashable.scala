@@ -37,17 +37,20 @@ trait Code {
 
 }
 
-case class SipHashCode(sipHash: HashFunction, hasher: Hasher, bytes: Seq[Byte])
-    extends Code {
+protected[peer] case class SipHashCode(
+    sipHash: HashFunction,
+    hasher: Hasher,
+    bytes: Seq[Byte]
+) extends Code {
 
   protected[peer] val hasCode = hasher.putBytes(bytes.toArray)
 
   override def toString(): String = hashCode.toString
 
-  def toBytes(): Array[Byte] = bytes.toArray
+  override def toBytes(): Array[Byte] = bytes.toArray
 
-  def toInt(): Int = hashCode.toInt
+  override def toInt(): Int = hashCode.toInt
 
-  def toLong(): Long = hashCode.toLong
+  override def toLong(): Long = hashCode.toLong
 
 }
