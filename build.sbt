@@ -32,7 +32,8 @@ lazy val coreSettings = Seq (
     "jitpack" at "https://jitpack.io"
   ),
   libraryDependencies ++= Seq (
-    "com.github.multiformats" % "java-multiaddr" % "1.4.1"
+    "com.github.multiformats" % "java-multiaddr" % "1.4.1",
+    "com.google.guava" % "guava" % "30.1.1-jre"
   )
 )
 
