@@ -1,5 +1,8 @@
 package peer
 
+import io.ipfs.multihash.Multihash
+import io.ipfs.multibase.Base58
+
 case class Id(bytes: Seq[Byte]) {
 
   protected[peer] val sipHashCode = Hashable[SipHashCode]().hash(bytes.toSeq)
@@ -8,6 +11,8 @@ case class Id(bytes: Seq[Byte]) {
 
   override def hashCode(): Int = sipHashCode.toInt()
 
-  def xor(): Int = sha256Code.toInt()
+  def xor(): BigInt = BigInt(sha256Code.toString(), 16)
+
+  def base58(): String = Base58.encode(bytes.toArray)
 
 }
