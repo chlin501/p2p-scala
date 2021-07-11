@@ -26,7 +26,7 @@ case object Key4096 extends KeySize {
 }
 
 object Keys {
-  def create(keyType: KeyType, keySize: KeySize = Key3072): KeyPair =
+  def create(keyType: KeyType = RSA, keySize: KeySize = Key3072): KeyPair =
     keyType match {
       case RSA =>
         val keyGen = KeyPairGenerator.getInstance("RSA")
